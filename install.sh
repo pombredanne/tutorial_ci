@@ -31,13 +31,12 @@ echo 'Node.js download & unpack completed'
 echo 'installing Node.js will take a while (it requires compiling C++ prgs)'
 echo 'installing Node.js'
 cd node-v0.8.14
-#./configure --prefix=$SCRIPTPATH/runtime/node && make && checkinstall --install=yes --pkgname=nodejs --pkgversion "0.8.14" --default
-./configure --prefix=$SCRIPTPATH/runtime/node && make && makeinstall
+./configure --prefix=$SCRIPTPATH/runtime/node && make && make install
 echo 'Node.js install completed'
 
 echo 'installing Testacular'
 cd $SCRIPTPATH
-./runtime/node/bin/npm install testacular@canary
+./runtime/node/bin/npm -g install testacular@canary
 echo 'Testacular install completed'
 
 
@@ -61,5 +60,5 @@ cd $SCRIPTPATH/tmp/pyrun-install
 wget http://downloads.egenix.com/python/install-pyrun
 chmod u+x install-pyrun
 ./install-pyrun $SCRIPTPATH/runtime/pyrun
-$SCRIPTPATH/runtime/pyrun/bin/pip install nose
+$SCRIPTPATH/runtime/pyrun/bin/pip install nose pylint nosexcover mock
 echo 'Python install completed'

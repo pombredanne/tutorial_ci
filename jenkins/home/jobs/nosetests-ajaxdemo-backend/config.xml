@@ -10,9 +10,9 @@
   </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties>
-    <de.pellepelster.jenkins.walldisplay.WallDisplayJobProperty/>
+    <de.pellepelster.jenkins.walldisplay.WallDisplayJobProperty plugin="jenkinswalldisplay@0.6.12"/>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@1.1.23">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -61,16 +61,14 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>. $JENKINS_HOME/../../pyenv/bin/activate
-
-nosetests -w $WORKSPACE/test/python/ --with-xcoverage --with-xunit \
+      <command>$JENKINS_HOME/../../runtime/pyrun/bin/nosetests -w $WORKSPACE/test/python/ --with-xcoverage --with-xunit \
     --cover-package=myapp --cover-erase
 
-pylint -f parseable $WORKSPACE/backend/restserver.py | tee pylint.out</command>
+$JENKINS_HOME/../../runtime/pyrun/bin/pylint -f parseable $WORKSPACE/backend/restserver.py | tee pylint.out</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
-    <hudson.plugins.cobertura.CoberturaPublisher>
+    <hudson.plugins.cobertura.CoberturaPublisher plugin="cobertura@1.6">
       <coberturaReportFile>**/coverage.xml</coberturaReportFile>
       <onlyStable>false</onlyStable>
       <failUnhealthy>false</failUnhealthy>
@@ -132,7 +130,7 @@ pylint -f parseable $WORKSPACE/backend/restserver.py | tee pylint.out</command>
       <keepLongStdio>true</keepLongStdio>
       <testDataPublishers/>
     </hudson.tasks.junit.JUnitResultArchiver>
-    <hudson.plugins.violations.ViolationsPublisher>
+    <hudson.plugins.violations.ViolationsPublisher plugin="violations@0.7.11">
       <config>
         <suppressions class="tree-set">
           <no-comparator/>

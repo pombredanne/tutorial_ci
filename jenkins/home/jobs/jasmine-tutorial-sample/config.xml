@@ -10,9 +10,9 @@
   </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties>
-    <de.pellepelster.jenkins.walldisplay.WallDisplayJobProperty/>
+    <de.pellepelster.jenkins.walldisplay.WallDisplayJobProperty plugin="jenkinswalldisplay@0.6.12"/>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@1.1.23">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -61,7 +61,8 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>$JENKINS_HOME/../../node/bin/testacular start $WORKSPACE/testacular.conf.js --single-run --browsers=Chrome --reporters=junit</command>
+      <command>PATH=$PATH:$JENKINS_HOME/../../runtime/node/bin/
+$JENKINS_HOME/../../runtime/node/bin/testacular start $WORKSPACE/testacular.conf.js --single-run --browsers=Chrome --reporters=junit</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
