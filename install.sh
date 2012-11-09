@@ -47,7 +47,7 @@ echo 'Testacular install completed'
 
 echo 'downloading Jenkins'
 cd $SCRIPTPATH/jenkins
-#wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war
+wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 echo 'Jenkins download completed'
 
 
