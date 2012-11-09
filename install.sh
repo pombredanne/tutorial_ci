@@ -1,9 +1,6 @@
 #!/bin/sh
 
-#SCRIPTPATH=`dirname $0`
 SCRIPTPATH=$( cd $(dirname $0) ; pwd -P )
-#echo $SCRIPTPATH
-#sleep 10000
 mkdir $SCRIPTPATH/tmp
 
 
@@ -12,11 +9,12 @@ mkdir $SCRIPTPATH/tmp
 #########################
 
 echo 'system packages we need superuser rights to install them'
+# update the package list
 sudo apt-get -y update
 # packages to compile Node.js
 sudo apt-get -y install libssl-dev git-core pkg-config build-essential curl gcc g++ checkinstall
 # we need a JRE for Jenkins...
-sudo apt-get -y install libssl-dev git-core pkg-config build-essential curl gcc g++ 
+sudo default-jre 
 echo 'system packages install completed'
 
 
