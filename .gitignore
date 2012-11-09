@@ -1,0 +1,67 @@
+# Generated Jenkins state
+jenkins/home/.owner
+jenkins/home/secret.key
+jenkins/home/*.xml
+jenkins/home/fingerprints/
+jenkins/home/shelvedProjects/
+jenkins/home/updates/
+jenkins/home/identity.key
+jenkins/home/userContent/
+jenkins/home/war/
+
+# Extracted plugins
+jenkins/home/plugins/*/
+
+# Plugins from jenkins.war
+jenkins/home/plugins/ant.jpi
+jenkins/home/plugins/cvs.jpi
+jenkins/home/plugins/external-monitor-job.jpi
+jenkins/home/plugins/javadoc.jpi
+jenkins/home/plugins/ldap.jpi
+jenkins/home/plugins/maven-plugin.jpi
+jenkins/home/plugins/pam-auth.jpi
+jenkins/home/plugins/ssh-slaves.jpi
+jenkins/home/plugins/subversion.jpi
+jenkins/home/plugins/translation.jpi
+
+# Job state
+builds/
+workspace/
+cobertura/
+lastStable
+lastSuccessful
+nextBuildNumber
+
+# Folders
+research/
+built/
+build/
+artwork/
+bak/
+tmp/
+env/
+testruns/
+INST/
+runtime/fitnesse/logs/
+runtime/pyrun/
+runtime/node/
+
+*.pyc
+*.class
+*.egg
+*.*~
+*~
+.coverage
+*.nja
+*.bak
+*.tar.gz
+coverage.xml
+jenkins/jenkins.war
+jenkins/home/backup.log
+nosetests.xml
+*.log
+*.tmp
+*.old
+*.jar
+*.json
+

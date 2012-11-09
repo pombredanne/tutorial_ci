@@ -27,6 +27,15 @@ My folder structure looks like so:
 * /home/mark/devel/fitnesse_jukebox
 
 
+Installation
+============
+
+You will be asked for the admin password by the installation script so that the script can install the Ubuntu / Debian system packages that are required to compile Node.js. If you are cautious you should check the script in advance for that packages that will be installed and any malicious code.
+
+Just run the install.sh script like:
+./install.sh
+
+
 Non Ubuntu / Debian Systems
 ===========================
 
