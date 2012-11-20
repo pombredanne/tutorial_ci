@@ -61,4 +61,24 @@ wget http://downloads.egenix.com/python/install-pyrun
 chmod u+x install-pyrun
 ./install-pyrun $SCRIPTPATH/runtime/pyrun
 $SCRIPTPATH/runtime/pyrun/bin/pip install nose pylint nosexcover mock
+$SCRIPTPATH/runtime/pyrun/bin/pip install numpy matplotlib xlrd chameleon
 echo 'Python install completed'
+
+
+#########################
+### JMeter installation
+#########################
+
+echo 'installing JMeter'
+mkdir $SCRIPTPATH/tmp/jmeter
+cd $SCRIPTPATH/tmp/jmeter
+wget http://www.eu.apache.org/dist//jmeter/binaries/apache-jmeter-2.8.tgz
+tar -zxvf apache-jmeter-2.8.tgz -C $SCRIPTPATH/runtime/
+echo 'JMeter install completed'
+
+
+#########################
+### cleanup
+#########################
+
+rm -rf $SCRIPTPATH/tmp/
