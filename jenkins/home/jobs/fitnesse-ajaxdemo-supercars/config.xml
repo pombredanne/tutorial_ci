@@ -13,9 +13,9 @@ note: &#xd;
   </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties>
-    <de.pellepelster.jenkins.walldisplay.WallDisplayJobProperty/>
+    <de.pellepelster.jenkins.walldisplay.WallDisplayJobProperty plugin="jenkinswalldisplay@0.6.12"/>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@1.1.23">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -67,7 +67,7 @@ note: &#xd;
       <command>./scripts/restserver.sh start
 </command>
     </hudson.tasks.Shell>
-    <hudson.tasks.Ant>
+    <hudson.tasks.Ant plugin="ant@1.1">
       <targets>-Dfitnesse.runtime=${JENKINS_HOME}/../../runtime/fitnesse/
 -Dfitnesse.basedir=${WORKSPACE}/test/fitnesse
 -Dfitnesse.testfile=SuperCars

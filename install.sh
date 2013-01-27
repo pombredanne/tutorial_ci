@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# (c) Mark Fink, 2008 - 2013
+# This script is released under the MIT License
+# Warranty in any form is excluded
+
 SCRIPTPATH=$( cd $(dirname $0) ; pwd -P )
 mkdir $SCRIPTPATH/tmp
 
@@ -14,7 +18,7 @@ sudo apt-get -y update
 # packages to compile Node.js
 sudo apt-get -y install libssl-dev git-core pkg-config build-essential curl gcc g++ checkinstall
 # we need a JRE for Jenkins...
-sudo default-jre 
+sudo apt-get -y install default-jre sysstat
 echo 'system packages install completed'
 
 
@@ -61,7 +65,8 @@ wget http://downloads.egenix.com/python/install-pyrun
 chmod u+x install-pyrun
 ./install-pyrun $SCRIPTPATH/runtime/pyrun
 $SCRIPTPATH/runtime/pyrun/bin/pip install nose pylint nosexcover mock
-$SCRIPTPATH/runtime/pyrun/bin/pip install numpy matplotlib xlrd chameleon
+$SCRIPTPATH/runtime/pyrun/bin/pip install paramiko numpy matplotlib
+$SCRIPTPATH/runtime/pyrun/bin/pip install xlrd chameleon
 echo 'Python install completed'
 
 
