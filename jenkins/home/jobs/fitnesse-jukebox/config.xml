@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Jukebox testsuite to demonstrate FitNesse use (no Selenium here)</description>
+  <description>Jukebox testsuite to demonstrate FitNesse use (no Selenium is used here)</description>
   <logRotator>
     <daysToKeep>30</daysToKeep>
     <numToKeep>-1</numToKeep>
@@ -10,15 +10,15 @@
   </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties>
-    <de.pellepelster.jenkins.walldisplay.WallDisplayJobProperty/>
+    <de.pellepelster.jenkins.walldisplay.WallDisplayJobProperty plugin="jenkinswalldisplay@0.6.12"/>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@1.1.23">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
         <name></name>
         <refspec></refspec>
-        <url>/home/mark/tutorial/fitnesse_jukebox/.git/</url>
+        <url>/home/mark/devel/fitnesse_jukebox/.git/</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -56,11 +56,12 @@
   <triggers class="vector">
     <hudson.triggers.SCMTrigger>
       <spec>0 0 * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.tasks.Ant>
+    <hudson.tasks.Ant plugin="ant@1.1">
       <targets>-Dfitnesse.runtime=${JENKINS_HOME}/../../runtime/fitnesse/
 -Dfitnesse.basedir=${WORKSPACE}/test/fitnesse
 -Dfitnesse.testfile=ProjectPage.JukeBox

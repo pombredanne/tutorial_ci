@@ -21,7 +21,7 @@ note: &#xd;
       <hudson.plugins.git.UserRemoteConfig>
         <name></name>
         <refspec></refspec>
-        <url>/home/mark/tutorial/supercars/.git/</url>
+        <url>/home/mark/devel/supercars/.git/</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>

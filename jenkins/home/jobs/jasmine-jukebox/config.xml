@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>SelRunner testsuite to verify selenium adapter functionality&#xd;
-note: this testsuite does not need a selenium server</description>
+  <description>tutorial_jasmine testsuite to demonstrate how to run jasmine tests using testacular</description>
   <logRotator>
     <daysToKeep>30</daysToKeep>
     <numToKeep>-1</numToKeep>
@@ -11,15 +10,15 @@ note: this testsuite does not need a selenium server</description>
   </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties>
-    <de.pellepelster.jenkins.walldisplay.WallDisplayJobProperty/>
+    <de.pellepelster.jenkins.walldisplay.WallDisplayJobProperty plugin="jenkinswalldisplay@0.6.12"/>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@1.1.23">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
         <name></name>
         <refspec></refspec>
-        <url>/home/mark/tutorial/SelRunner/.git/</url>
+        <url>/home/mark/devel/tutorial_jasmine/.git/</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -57,29 +56,20 @@ note: this testsuite does not need a selenium server</description>
   <triggers class="vector">
     <hudson.triggers.SCMTrigger>
       <spec>0 0 * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.tasks.Ant>
-      <targets>-Dfitnesse.runtime=${JENKINS_HOME}/../../runtime/fitnesse/
--Dfitnesse.basedir=${WORKSPACE}/test/fitnesse
--Dfitnesse.testfile=SelRunner.FirefoxBrowser
--Dfitnesse.suiteFilter=NIGHTLY
--Dfitnesse.port=10201
--Dslim.port=10210
--Dselenium.server=http://SAKAI:4444/wd/hub
--Dselenium.browser=FirefoxRemoteRunner
--Dreport.path=${WORKSPACE}/test/fitnesse/results
-</targets>
-      <antOpts>-Xmx1024m -XX:MaxPermSize=128m</antOpts>
-      <buildFile>${JENKINS_HOME}/../../runtime/fitnesse/antscript/build.xml</buildFile>
-    </hudson.tasks.Ant>
+    <hudson.tasks.Shell>
+      <command>PATH=$PATH:$JENKINS_HOME/../../runtime/node/bin/
+$JENKINS_HOME/../../runtime/node/bin/testacular start $WORKSPACE/testacular.conf.js --single-run --browsers=Chrome --reporters=junit</command>
+    </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.junit.JUnitResultArchiver>
-      <testResults>test/fitnesse/results/junit.xml</testResults>
-      <keepLongStdio>true</keepLongStdio>
+      <testResults>junit.xml</testResults>
+      <keepLongStdio>false</keepLongStdio>
       <testDataPublishers/>
     </hudson.tasks.junit.JUnitResultArchiver>
   </publishers>
