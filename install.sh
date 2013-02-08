@@ -12,7 +12,7 @@ mkdir $SCRIPTPATH/tmp
 ### system packages
 #########################
 
-echo 'system packages we need superuser rights to install them'
+echo 'system packages\nyou need to provide superuser rights to install them'
 # update the package list
 sudo apt-get -y update
 # packages to compile Node.js
