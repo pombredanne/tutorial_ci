@@ -19,7 +19,7 @@ note: this testsuite does not need a selenium server</description>
       <hudson.plugins.git.UserRemoteConfig>
         <name></name>
         <refspec></refspec>
-        <url>/home/mark/devel/SelRunner/.git/</url>
+        <url>/home/mark/tutorial/SelRunner/.git/</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>

@@ -1,6 +1,8 @@
 # Generated Jenkins state
 jenkins/home/.owner
 jenkins/home/secret.key
+jenkins/home/secret.key.not-so-secret
+jenkins/home/secrets/
 jenkins/home/*.xml
 jenkins/home/fingerprints/
 jenkins/home/shelvedProjects/
@@ -23,6 +25,7 @@ jenkins/home/plugins/pam-auth.jpi
 jenkins/home/plugins/ssh-slaves.jpi
 jenkins/home/plugins/subversion.jpi
 jenkins/home/plugins/translation.jpi
+jenkins/home/plugins/mailer.jpi
 
 # Job state
 builds/

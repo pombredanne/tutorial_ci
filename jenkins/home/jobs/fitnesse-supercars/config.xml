@@ -1,7 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>testsuite to run jasmine controllers tests for ajaxdemo</description>
+  <description>Supercars testsuite to verify ajax demo application&#xd;
+note: &#xd;
+* this testsuite requires the restserver to run&#xd;
+* this testsuite does not need a selenium server</description>
   <logRotator>
     <daysToKeep>30</daysToKeep>
     <numToKeep>-1</numToKeep>
@@ -18,7 +21,7 @@
       <hudson.plugins.git.UserRemoteConfig>
         <name></name>
         <refspec></refspec>
-        <url>/home/mark/devel/ajaxdemo/.git/</url>
+        <url>/home/mark/tutorial/supercars/.git/</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -56,21 +59,37 @@
   <triggers class="vector">
     <hudson.triggers.SCMTrigger>
       <spec>0 0 * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>PATH=$PATH:$JENKINS_HOME/../../runtime/node/bin/
-$JENKINS_HOME/../../runtime/node/bin/testacular start \
-    $WORKSPACE/test/jasmine/testacular.conf.js \
-    --single-run --browsers=Chrome --reporters=junit</command>
+      <command>./scripts/restserver.sh start
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Ant plugin="ant@1.1">
+      <targets>-Dfitnesse.runtime=${JENKINS_HOME}/../../runtime/fitnesse/
+-Dfitnesse.basedir=${WORKSPACE}/test/fitnesse
+-Dfitnesse.testfile=SuperCars
+-Dfitnesse.suiteFilter=NIGHTLY
+-Dfitnesse.port=10201
+-Dslim.port=10210
+-Dselenium.server=http://SAKAI:4444/wd/hub
+-Dselenium.browser=FirefoxRemoteRunner
+-Dreport.path=${WORKSPACE}/test/fitnesse/results</targets>
+      <antOpts>-Xmx1024m -XX:MaxPermSize=128m</antOpts>
+      <buildFile>${JENKINS_HOME}/../../runtime/fitnesse/antscript/build.xml</buildFile>
+    </hudson.tasks.Ant>
+    <hudson.tasks.Shell>
+      <command>./scripts/restserver.sh stop
+</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.junit.JUnitResultArchiver>
-      <testResults>junit.xml</testResults>
-      <keepLongStdio>false</keepLongStdio>
+      <testResults>test/fitnesse/results/junit.xml</testResults>
+      <keepLongStdio>true</keepLongStdio>
       <testDataPublishers/>
     </hudson.tasks.junit.JUnitResultArchiver>
   </publishers>

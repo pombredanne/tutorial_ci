@@ -18,7 +18,7 @@
       <hudson.plugins.git.UserRemoteConfig>
         <name></name>
         <refspec></refspec>
-        <url>/home/mark/devel/fitnesse_jukebox/.git/</url>
+        <url>/home/mark/tutorial/fitnesse_jukebox/.git/</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
