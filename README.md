@@ -12,66 +12,65 @@ You will be asked for the admin password by the installation script so that the 
 
 *Location of the tutorial folder*
 
-    First you need to define a location where you want to put all the demo files. Lets say you want to put everything in "/home/marvin/tutorial" where "marvin" would be your user name.
+First you need to define a location where you want to put all the demo files. Lets say you want to put everything in "/home/marvin/tutorial" where "marvin" would be your user name.
 
-    Open a console and create the "tutorial" directory:
+Open a console and create the "tutorial" directory:
 
-    ..  sourcecode:: shell
+..  sourcecode:: shell
 
-        mkdir /home/marvin/tutorial
-        cd /home/marvin/tutorial
+    mkdir /home/marvin/tutorial
+    cd /home/marvin/tutorial
 
 
 *Pull the tutorial_ci server*
 
-    You are currently in "/home/marvin/tutorial". You use the git client to pull all the necessary installation and configuration files from the tutorial_ci repository at github to your local tutorial folder.
+You are currently in "/home/marvin/tutorial". You use the git client to pull all the necessary installation and configuration files from the tutorial_ci repository at github to your local tutorial folder.
 
-    ..  sourcecode:: shell
+..  sourcecode:: shell
 
-        git clone --depth 1 http://github.com/markfink/tutorial_ci
+    git clone --depth 1 http://github.com/markfink/tutorial_ci
 
 
 *Installing the open source test automation tools*
 
-    This section walks you through the installation of tools required for the book demos. In order to ease the installation procedure, I created a installation script that downloads, installs, and adds the required configuration for each tool to your local tutorial folder. This means you can experiment without messing up your environment. All you need to know is how to run this installation script. Each test-automation tool comes with its own specific installation procedure which is outside of the scope of the book. If you need specific information you should visit the tools project page and read its README and installation manuals.
+This section walks you through the installation of tools required for the book demos. In order to ease the installation procedure, I created a installation script that downloads, installs, and adds the required configuration for each tool to your local tutorial folder. This means you can experiment without messing up your environment. All you need to know is how to run this installation script. Each test-automation tool comes with its own specific installation procedure which is outside of the scope of the book. If you need specific information you should visit the tools project page and read its README and installation manuals.
 
-    The installation script downloads, makes and installs the following tools into the tutorial_ci/runtime folder:
+The installation script downloads, makes and installs the following tools into the tutorial_ci/runtime folder:
 
-    * Jenkins
-    * Node.js / Testacular
-    * Python / nosetests
-    * Fitnesse / Selenium
-    * JMeter
+* Jenkins
+* Node.js / Testacular
+* Python / nosetests
+* Fitnesse / Selenium
+* JMeter
 
-    If you are ready, just run the installation script:
+If you are ready, just run the installation script:
 
-    ..  sourcecode:: shell
+..  sourcecode:: shell
 
-        cd tutorial_ci
-        ./install.sh
+    cd tutorial_ci
+    ./install.sh
 
 
 *Pull the demo repositories*
 
-    In order to give your continuous integration server something to do you need the demo projects. I provided a script that does all the work (again prerequisite is git).
+In order to give your continuous integration server something to do you need the demo projects. I provided a script that does all the work (again prerequisite is git).
 
-    The pull_demos.sh script gets the following demo projects from github:
+The pull_demos.sh script gets the following demo projects from github:
 
-    * supercars - the Supercar sample application
-    * fitnesse_jukebox - tutorial on using FitNesse
-    * SelRunner - using FitNesse for browser automation
-    * tutorial_jasmine - tutorial on using Jasmine for testing the jukebox sample
-    * grandma - a combinatorial testing tool and sample tests
+* supercars - the Supercar sample application
+* fitnesse_jukebox - tutorial on using FitNesse
+* SelRunner - using FitNesse for browser automation
+* tutorial_jasmine - tutorial on using Jasmine for testing the jukebox sample
+* grandma - a combinatorial testing tool and sample tests
 
-    When running the script all the demo projects will be stored in your tutorial folder e.g. "/home/marvin/tutorial".
+When running the script all the demo projects will be stored in your tutorial folder e.g. "/home/marvin/tutorial".
 
-    If you are ready, just run the pull_demos script:
+If you are ready, just run the pull_demos script:
 
-    ..  sourcecode:: shell
-
-        cd tutorial_ci
-        ./pull_demos.sh
-
+```bash
+cd tutorial_ci
+./pull_demos.sh
+```
 
 Non Ubuntu / Debian Systems
 ===========================
