@@ -16,20 +16,19 @@ First you need to define a location where you want to put all the demo files. Le
 
 Open a console and create the "tutorial" directory:
 
-..  sourcecode:: shell
-
-    mkdir /home/marvin/tutorial
-    cd /home/marvin/tutorial
+```bash
+mkdir /home/marvin/tutorial
+cd /home/marvin/tutorial
+```
 
 
 *Pull the tutorial_ci server*
 
 You are currently in "/home/marvin/tutorial". You use the git client to pull all the necessary installation and configuration files from the tutorial_ci repository at github to your local tutorial folder.
 
-..  sourcecode:: shell
-
-    git clone --depth 1 http://github.com/markfink/tutorial_ci
-
+```bash
+git clone --depth 1 http://github.com/markfink/tutorial_ci
+```
 
 *Installing the open source test automation tools*
 
@@ -45,10 +44,10 @@ The installation script downloads, makes and installs the following tools into t
 
 If you are ready, just run the installation script:
 
-..  sourcecode:: shell
-
-    cd tutorial_ci
-    ./install.sh
+```bash
+cd tutorial_ci
+./install.sh
+```
 
 
 *Pull the demo repositories*
