@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>tutorial_jasmine testsuite to demonstrate how to run jasmine tests using testacular</description>
+  <description>testsuite to run jasmine controllers tests for supercars</description>
   <logRotator>
     <daysToKeep>30</daysToKeep>
     <numToKeep>-1</numToKeep>
@@ -18,7 +18,7 @@
       <hudson.plugins.git.UserRemoteConfig>
         <name></name>
         <refspec></refspec>
-        <url>/home/mark/devel/tutorial_jasmine/.git/</url>
+        <url>/home/mark/devel/supercars/.git/</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -56,13 +56,16 @@
   <triggers class="vector">
     <hudson.triggers.SCMTrigger>
       <spec>0 0 * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
       <command>PATH=$PATH:$JENKINS_HOME/../../runtime/node/bin/
-$JENKINS_HOME/../../runtime/node/bin/testacular start $WORKSPACE/testacular.conf.js --single-run --browsers=Chrome --reporters=junit</command>
+$JENKINS_HOME/../../runtime/node/bin/testacular start \
+    $WORKSPACE/test/jasmine/testacular.conf.js \
+    --single-run --browsers=Chrome --reporters=junit</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
