@@ -57,7 +57,6 @@ note: this testsuite does not need a selenium server</description>
   <triggers class="vector">
     <hudson.triggers.SCMTrigger>
       <spec>0 0 * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>

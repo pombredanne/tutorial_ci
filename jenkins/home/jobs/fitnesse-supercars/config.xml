@@ -59,7 +59,6 @@ note: &#xd;
   <triggers class="vector">
     <hudson.triggers.SCMTrigger>
       <spec>0 0 * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
