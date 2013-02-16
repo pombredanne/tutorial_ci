@@ -77,8 +77,8 @@ echo 'Python install completed'
 echo 'installing JMeter'
 mkdir $SCRIPTPATH/tmp/jmeter
 cd $SCRIPTPATH/tmp/jmeter
-wget http://www.eu.apache.org/dist//jmeter/binaries/apache-jmeter-2.8.tgz
-tar -zxvf apache-jmeter-2.8.tgz -C $SCRIPTPATH/runtime/
+wget http://archive.apache.org/dist/jmeter/binaries/apache-jmeter-2.9.tgz
+tar -zxvf apache-jmeter-2.9.tgz -C $SCRIPTPATH/runtime/
 echo 'JMeter install completed'
 
 
