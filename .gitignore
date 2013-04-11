@@ -48,6 +48,7 @@ INST/
 runtime/fitnesse/logs/
 runtime/pyrun/
 runtime/node/
+runtime/apache-jmeter-2.9/
 
 *.pyc
 *.class
