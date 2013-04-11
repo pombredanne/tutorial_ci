@@ -62,7 +62,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>PATH=$PATH:$JENKINS_HOME/../../runtime/node/bin/
-$JENKINS_HOME/../../runtime/node/bin/testacular start $WORKSPACE/testacular.conf.js --single-run --browsers=Chrome --reporters=junit</command>
+$JENKINS_HOME/../../runtime/node/bin/karma start $WORKSPACE/karma.conf.js --single-run --browsers=Chrome --reporters=junit</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

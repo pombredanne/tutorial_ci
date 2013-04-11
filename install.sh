@@ -38,10 +38,10 @@ cd node-v0.8.14
 ./configure --prefix=$SCRIPTPATH/runtime/node && make && make install
 echo 'Node.js install completed'
 
-echo 'installing Testacular'
+echo 'installing Karma / Testacular'
 cd $SCRIPTPATH
-./runtime/node/bin/npm -g install testacular@canary
-echo 'Testacular install completed'
+./runtime/node/bin/npm -g install karma
+echo 'Karma / Testacular install completed'
 
 
 #########################
