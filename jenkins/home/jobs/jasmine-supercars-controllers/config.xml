@@ -64,7 +64,7 @@
       <command>PATH=$PATH:$JENKINS_HOME/../../runtime/node/bin/
 $JENKINS_HOME/../../runtime/node/bin/karma start \
     $WORKSPACE/test/jasmine/karma.conf.js \
-    --single-run --browsers=Chrome --reporters=junit</command>
+    --single-run --browsers=Firefox --reporters=junit</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

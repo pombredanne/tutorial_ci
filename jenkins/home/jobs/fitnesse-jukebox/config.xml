@@ -69,7 +69,7 @@
 -Dfitnesse.port=10201
 -Dslim.port=10210
 -Dselenium.server=none
--Dselenium.browser=none
+-Dselenium.browser=ChromeRunner
 -Dreport.path=${WORKSPACE}/test/fitnesse/results</targets>
       <antOpts>-Xmx1024m -XX:MaxPermSize=128m</antOpts>
       <buildFile>${JENKINS_HOME}/../../runtime/fitnesse/antscript/build.xml</buildFile>
