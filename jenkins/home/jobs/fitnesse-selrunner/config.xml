@@ -64,7 +64,7 @@ note: this testsuite does not need a selenium server</description>
     <hudson.tasks.Ant plugin="ant@1.1">
       <targets>-Dfitnesse.runtime=${JENKINS_HOME}/../../runtime/fitnesse/
 -Dfitnesse.basedir=${WORKSPACE}/test/fitnesse
--Dfitnesse.testfile=SelRunner.FirefoxBrowser
+-Dfitnesse.testfile=SelRunner.ChromeBrowser
 -Dfitnesse.suiteFilter=NIGHTLY
 -Dfitnesse.port=10201
 -Dslim.port=10210

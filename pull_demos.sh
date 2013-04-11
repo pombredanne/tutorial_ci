@@ -36,4 +36,4 @@ echo 'adjusting completed'
 ### Compile the JukeBox example
 #########################
 
-maven -f $TUTORIAL_FOLDER/fitnesse_jukebox/pom.xml compile
+mvn -f $TUTORIAL_FOLDER/fitnesse_jukebox/pom.xml compile
