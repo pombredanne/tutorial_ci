@@ -18,7 +18,7 @@ sudo apt-get -y update
 # packages to compile Node.js
 sudo apt-get -y install libssl-dev git-core pkg-config build-essential curl gcc g++ checkinstall
 # we need a JRE for Jenkins...
-sudo apt-get -y install openjdk-7-jdk ant sysstat
+sudo apt-get -y install openjdk-7-jdk ant maven sysstat
 # we need chrome browser for testing alternatively use firefox esr release!
 sudo apt-get -y install chromium-browser
 echo 'system packages install completed'

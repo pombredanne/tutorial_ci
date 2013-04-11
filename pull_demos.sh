@@ -31,3 +31,9 @@ echo 'adjusting Jenkins jobs'
 find ./jenkins -name "config.xml" -print | xargs \
     sed -i "s|/home/mark/devel|$TUTORIAL_FOLDER|g"
 echo 'adjusting completed'
+
+#########################
+### Compile the JukeBox example
+#########################
+
+maven -f $TUTORIAL_FOLDER/fitnesse_jukebox/pom.xml compile
