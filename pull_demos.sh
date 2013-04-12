@@ -1,39 +1,37 @@
-#!/bin/bash
+@ECHO OFF
 
-# (c) Mark Fink, 2008 - 2013
-# This script is released under the MIT License
-# Warranty in any form is excluded
+REM # (c) Mark Fink, 2008 - 2013
+REM # This script is released under the MIT License
+REM # Warranty in any form is excluded
 
-TUTORIAL_FOLDER=$( cd $(dirname $0) ; cd .. ; pwd -P )
+set SCRIPTPATH=%~dp0
 
-#########################
-### pull all the demo repositories from github parallel to tutorial_ci
-#########################
+REM #########################
+REM ## pull all the demo repositories from github parallel to tutorial_ci
+REM #########################
 
 echo 'pulling demo files'
-git clone http://github.com/markfink/supercars \
-    $TUTORIAL_FOLDER/supercars
-git clone http://github.com/markfink/fitnesse_jukebox \
-    $TUTORIAL_FOLDER/fitnesse_jukebox
-git clone http://github.com/markfink/SelRunner \
-    $TUTORIAL_FOLDER/SelRunner
-git clone http://github.com/markfink/tutorial_jasmine \
-    $TUTORIAL_FOLDER/tutorial_jasmine
-git clone http://github.com/markfink/grandma \
-    $TUTORIAL_FOLDER/grandma
+cd ..
+git clone http://github.com/markfink/supercars
+git clone http://github.com/markfink/fitnesse_jukebox
+git clone http://github.com/markfink/SelRunner
+git clone http://github.com/markfink/tutorial_jasmine
+git clone http://github.com/markfink/grandma
+cd "%SCRIPTPATH%"
 echo 'pulling demo files completed'
 
-#########################
-### Adjusting paths in Jenkins jobs to local repo locations
-#########################
+REM #########################
+REM ### Adjusting paths in Jenkins jobs to local repo locations
+REM #########################
 
 echo 'adjusting Jenkins jobs'
-find ./jenkins -name "config.xml" -print | xargs \
-    sed -i "s|/home/mark/devel|$TUTORIAL_FOLDER|g"
+.\runtime\python\python replace.py "/home/mark/devel" "%SCRIPTPATH%" ".\jenkins\**\config.xml"
+REM find ./jenkins -name "config.xml" -print | xargs \
+REM     sed -i "s|/home/mark/devel|$TUTORIAL_FOLDER|g"
 echo 'adjusting completed'
 
-#########################
-### Compile the JukeBox example
-#########################
+REM #########################
+REM ### Compile the JukeBox example
+REM #########################
 
-mvn -f $TUTORIAL_FOLDER/fitnesse_jukebox/pom.xml compile
+.\runtime\apache-maven-2.2.1\bin\mvn -f %SCRIPTPATH%\fitnesse_jukebox/pom.xml compile
