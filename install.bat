@@ -8,6 +8,32 @@ set SCRIPTPATH=%~dp0
 set PATH=%PATH%;%SCRIPTPATH%
 mkdir "%SCRIPTPATH%\tmp"
 
+:python
+REM #########################
+REM ### Python installation
+REM #########################
+
+echo 'installing Python'
+mkdir "%SCRIPTPATH%\tmp\python-install
+cd "%SCRIPTPATH%\tmp\python-install"
+wget http://www.python.org/ftp/python/2.7.4/python-2.7.4.msi
+wget http://pypi.python.org/packages/2.7/n/numpy/numpy-1.7.1.win32-py2.7.exe
+wget http://downloads.sourceforge.net/project/matplotlib/matplotlib/matplotlib-1.2.1/matplotlib-1.2.1.win32-py2.7.exe
+wget http://www.voidspace.org.uk/downloads/pycrypto26/pycrypto-2.6.win32-py2.7.exe
+wget http://python-distribute.org/distribute_setup.py
+msiexec /i python-2.7.4.msi TARGETDIR="%SCRIPTPATH%\runtime\python" /qn ALLUSERS=0
+numpy-1.7.1.win32-py2.7.exe
+matplotlib-1.2.1.win32-py2.7.exe
+pycrypto-2.6.win32-py2.7.exe
+cd "%SCRIPTPATH%"
+.\runtime\python\python tmp\python-install\distribute_setup.py
+.\runtime\python\Scripts\easy_install pip
+.\runtime\python\Scripts\pip install nose pylint nosexcover mock
+.\runtime\python\Scripts\pip install paramiko
+.\runtime\python\Scripts\pip install pytz
+.\runtime\python\Scripts\pip install xlrd chameleon
+echo 'Python install completed'
+
 
 :jenkins
 REM #########################
@@ -17,34 +43,8 @@ REM #########################
 echo 'downloading Jenkins'
 cd "%SCRIPTPATH%\jenkins"
 wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war
-echo 'Jenkins download completed'
-
-
-:python
-REM #########################
-REM ### Python installation
-REM #########################
-
-echo 'installing Python'
-mkdir "%SCRIPTPATH%\tmp\python-install
-cd "%SCRIPTPATH%\tmp\python-install"
-REM wget http://www.python.org/ftp/python/2.7.4/python-2.7.4.msi
-REM wget http://pypi.python.org/packages/2.7/n/numpy/numpy-1.7.1.win32-py2.7.exe
-REM wget http://downloads.sourceforge.net/project/matplotlib/matplotlib/matplotlib-1.2.1/matplotlib-1.2.1.win32-py2.7.exe
-wget http://www.voidspace.org.uk/downloads/pycrypto26/pycrypto-2.6.win32-py2.7.exe
-REM wget http://python-distribute.org/distribute_setup.py
-REM msiexec /i python-2.7.4.msi TARGETDIR="%SCRIPTPATH%\runtime\python" /qn ALLUSERS=0
-REM numpy-1.7.1.win32-py2.7.exe
-REM matplotlib-1.2.1.win32-py2.7.exe
-pycrypto-2.6.win32-py2.7.exe
 cd "%SCRIPTPATH%"
-REM .\runtime\python\python tmp\python-install\distribute_setup.py
-REM .\runtime\python\Scripts\easy_install pip
-.\runtime\python\Scripts\pip install nose pylint nosexcover mock
-.\runtime\python\Scripts\pip install paramiko
-.\runtime\python\Scripts\pip install pytz
-.\runtime\python\Scripts\pip install xlrd chameleon
-echo 'Python install completed'
+echo 'Jenkins download completed'
 
 
 :jmeter
@@ -84,10 +84,26 @@ cd "%SCRIPTPATH%"
 echo 'Karma install completed'
 
 
+:maven
+REM #########################
+REM ### Maven installation
+REM #########################
+
+echo 'installing Maven'
+mkdir "%SCRIPTPATH%\tmp\maven-install"
+cd "%SCRIPTPATH%\tmp\maven-install"
+wget http://mirror.serversupportforum.de/apache/maven/maven-2/2.2.1/binaries/apache-maven-2.2.1-bin.zip
+cd "%SCRIPTPATH%"
+.\runtime\python\python unzip.py -z "%SCRIPTPATH%\tmp\maven-install\apache-maven-2.2.1-bin.zip" -o ".\runtime" -p 100
+cd "%SCRIPTPATH%"
+echo 'Maven install completed'
+
+
+:cleanup
 REM #########################
 REM ### cleanup
 REM #########################
 
-rm -rf "%SCRIPTPATH%\tmp\"
+rmdir /s /q "%SCRIPTPATH%\tmp\"
 
 :end
