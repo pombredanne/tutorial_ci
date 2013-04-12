@@ -7,6 +7,22 @@ I did my very best to make the book software and tools to install on a Windows (
 Another thing is if you find out how to improve the installation on a Windows (TM) environm,ent please contribute that as well.
 
 
+You need a Java Runtime environment as well
+===========================================
+
+Some of the test automation tools like Selenium 2 need a Java runtime environment. If you have already installed one you can skip this step. Otherwise visit the following link:
+http://javadl.sun.com/webapps/download/AutoDL?BundleId=75268
+
+
+You need Chrome browser installed
+=================================
+
+The default configuration for the Supercar browser tests uses the Google Chrome browser. 
+
+Install Google Chrome:
+www.google.com/chrome
+
+
 First you need git
 ==================
 
@@ -45,12 +61,11 @@ The installation script downloads, makes and installs the following tools into t
 * Fitnesse / Selenium
 * JMeter
 
+I tried to automate the installation process but unfortunately this is currently not entierly possible. Some of the installers will pop up and you have to move them forward.
+
 If you are ready, just run the installation script:
 >cd tutorial_ci
 >install.bat
-
-
-
 
 
 *Pull the demo repositories*
