@@ -13,6 +13,8 @@ You need a Java Runtime environment as well
 Some of the test automation tools like Selenium 2 need a Java runtime environment. If you have already installed one you can skip this step. Otherwise visit the following link:
 http://javadl.sun.com/webapps/download/AutoDL?BundleId=75268
 
+Do not forget to set the JAVA_HOME folder!
+
 
 You need Chrome browser installed
 =================================

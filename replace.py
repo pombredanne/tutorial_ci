@@ -17,16 +17,12 @@ if len(sys.argv) < 2:
 
 stext = sys.argv[1]
 rtext = sys.argv[2]
-if len(sys.argv) == 4:
-    path = os.path.join(sys.argv[3], '*')
-else:
-    path = '*'
-
+path = sys.argv[3]
 
 print 'finding: %s and replacing with: %s' % (stext, rtext)
 
-
 files = glob.glob(path)
+print 'files: %s' % files
 for line in fileinput.input(files, inplace=1):
     if stext in line:
         line = line.replace(stext, rtext)
