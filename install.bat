@@ -4,91 +4,90 @@ REM (c) Mark Fink, 2008 - 2013
 REM This script is released under the MIT License
 REM Warranty in any form is excluded
 
-SCRIPTPATH=$( cd $(dirname $0) ; pwd -P )
-mkdir $SCRIPTPATH/tmp
+set SCRIPTPATH=%~dp0
+set PATH=%PATH%;%SCRIPTPATH%
+mkdir "%SCRIPTPATH%\tmp"
 
 
-REM #########################
-REM ### system packages
-REM #########################
-
-echo 'system packages\nyou need to provide superuser rights to install them'
-REM update the package list
-sudo apt-get -y update
-REM packages to compile Node.js
-sudo apt-get -y install libssl-dev git-core pkg-config build-essential curl gcc g++ checkinstall
-REM most of the matplotlib dependencies should already be satisfied
-sudo apt-get build-dep python-matplotlib
-REM we need a JRE for Jenkins...
-sudo apt-get -y install openjdk-7-jdk ant maven sysstat
-REM we need chrome browser for testing alternatively use firefox esr release!
-sudo apt-get -y install chromium-browser
-echo 'system packages install completed'
-
-
-REM #########################
-REM ### Node.js installation
-REM #########################
-
-echo 'download Node.js - v. 0.8.14'
-mkdir $SCRIPTPATH/tmp/node-install
-cd $SCRIPTPATH/tmp/node-install
-wget http://nodejs.org/dist/v0.8.14/node-v0.8.14.tar.gz
-tar -zxf node-v0.8.14.tar.gz
-echo 'Node.js download & unpack completed'
-echo 'installing Node.js will take a while (it requires compiling C++ prgs)'
-echo 'installing Node.js'
-cd node-v0.8.14
-./configure --prefix=$SCRIPTPATH/runtime/node && make && make install
-echo 'Node.js install completed'
-
-echo 'installing Karma / Testacular'
-cd $SCRIPTPATH
-./runtime/node/bin/npm -g install karma
-echo 'Karma / Testacular install completed'
-
-
+:jenkins
 REM #########################
 REM ### Jenkins installation
 REM #########################
 
 echo 'downloading Jenkins'
-cd $SCRIPTPATH/jenkins
+cd "%SCRIPTPATH%\jenkins"
 wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 echo 'Jenkins download completed'
 
 
+:python
 REM #########################
 REM ### Python installation
 REM #########################
 
 echo 'installing Python'
-mkdir $SCRIPTPATH/tmp/pyrun-install
-cd $SCRIPTPATH/tmp/pyrun-install
-wget http://downloads.egenix.com/python/install-pyrun
-chmod u+x install-pyrun
-./install-pyrun $SCRIPTPATH/runtime/pyrun
-$SCRIPTPATH/runtime/pyrun/bin/pip install nose pylint nosexcover mock
-$SCRIPTPATH/runtime/pyrun/bin/pip install paramiko
-$SCRIPTPATH/runtime/pyrun/bin/pip install numpy matplotlib pytz
-$SCRIPTPATH/runtime/pyrun/bin/pip install xlrd chameleon
+mkdir "%SCRIPTPATH%\tmp\python-install
+cd "%SCRIPTPATH%\tmp\python-install"
+REM wget http://www.python.org/ftp/python/2.7.4/python-2.7.4.msi
+REM wget http://pypi.python.org/packages/2.7/n/numpy/numpy-1.7.1.win32-py2.7.exe
+REM wget http://downloads.sourceforge.net/project/matplotlib/matplotlib/matplotlib-1.2.1/matplotlib-1.2.1.win32-py2.7.exe
+wget http://www.voidspace.org.uk/downloads/pycrypto26/pycrypto-2.6.win32-py2.7.exe
+REM wget http://python-distribute.org/distribute_setup.py
+REM msiexec /i python-2.7.4.msi TARGETDIR="%SCRIPTPATH%\runtime\python" /qn ALLUSERS=0
+REM numpy-1.7.1.win32-py2.7.exe
+REM matplotlib-1.2.1.win32-py2.7.exe
+pycrypto-2.6.win32-py2.7.exe
+cd "%SCRIPTPATH%"
+REM .\runtime\python\python tmp\python-install\distribute_setup.py
+REM .\runtime\python\Scripts\easy_install pip
+.\runtime\python\Scripts\pip install nose pylint nosexcover mock
+.\runtime\python\Scripts\pip install paramiko
+.\runtime\python\Scripts\pip install pytz
+.\runtime\python\Scripts\pip install xlrd chameleon
 echo 'Python install completed'
 
 
+:jmeter
 REM #########################
 REM ### JMeter installation
 REM #########################
 
 echo 'installing JMeter'
-mkdir $SCRIPTPATH/tmp/jmeter
-cd $SCRIPTPATH/tmp/jmeter
-wget http://archive.apache.org/dist/jmeter/binaries/apache-jmeter-2.9.tgz
-tar -zxvf apache-jmeter-2.9.tgz -C $SCRIPTPATH/runtime/
+mkdir "%SCRIPTPATH%\tmp\jmeter-install"
+cd "%SCRIPTPATH%\tmp\jmeter-install"
+wget http://archive.apache.org/dist/jmeter/binaries/apache-jmeter-2.9.zip
+cd "%SCRIPTPATH%"
+.\runtime\python\python unzip.py -z "%SCRIPTPATH%\tmp\jmeter-install\apache-jmeter-2.9.zip" -o ".\runtime" -p 100
+cd "%SCRIPTPATH%"
 echo 'JMeter install completed'
+
+
+:node
+REM #########################
+REM ### Node.js installation
+REM #########################
+
+echo 'download Node.js - v. 0.10.4'
+mkdir "%SCRIPTPATH%\runtime\node"
+cd "%SCRIPTPATH%\runtime\node"
+wget http://nodejs.org/dist/v0.10.4/node.exe
+mkdir "%SCRIPTPATH%\tmp\node-install"
+cd "%SCRIPTPATH%\tmp\node-install"
+wget http://nodejs.org/dist/npm/npm-1.2.9.zip
+cd "%SCRIPTPATH%"
+.\runtime\python\python unzip.py -z "%SCRIPTPATH%\tmp\node-install\npm-1.2.9.zip" -o ".\runtime\node" -p 100
+echo 'Node.js install completed'
+
+echo 'installing Karma'
+cd "%SCRIPTPATH%"
+.\runtime\node\npm -g install karma
+echo 'Karma install completed'
 
 
 REM #########################
 REM ### cleanup
 REM #########################
 
-rm -rf $SCRIPTPATH/tmp/
+rm -rf "%SCRIPTPATH%\tmp\"
+
+:end
