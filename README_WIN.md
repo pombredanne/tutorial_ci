@@ -23,20 +23,10 @@ https://ant.apache.org/bindownload.cgi
 The installation bin folder must be added to the path veriable. Do not forget to set the ANT_HOME folder!
 
 
-You need Chrome browser installed
-=================================
-
-The default configuration for the Supercar browser tests uses the Google Chrome browser. 
-
-Install Google Chrome:
-www.google.com/chrome
-
-Please set the CHROME_BIN environment variable to the locaton of chrome browser executable!
-On my test environment this is set to C:\Programme\Google\Chrome\Application\chrome.exe.
-
-
 You need Firefox browser (ESR) installed
 ========================================
+
+Firefox ESR is mostly used for regression test automation since it is more reliable for browser automation.
 
 Start here:
 http://www.mozilla.org/en-US/firefox/organizations/all.html
@@ -101,7 +91,7 @@ If you are ready, just run the installation script:
 
 In order to give your continuous integration server something to do you need the demo projects. I provided a script that does all the work (again prerequisite is git).
 
-The pull_demos.sh script gets the following demo projects from github:
+The pull_demos.bat script gets the following demo projects from github:
 
 * supercars - the Supercar sample application
 * fitnesse_jukebox - tutorial on using FitNesse
@@ -109,22 +99,20 @@ The pull_demos.sh script gets the following demo projects from github:
 * tutorial_jasmine - tutorial on using Jasmine for testing the jukebox sample
 * grandma - a combinatorial testing tool and sample tests
 
-When running the script all the demo projects will be stored in your tutorial folder e.g. "/home/marvin/tutorial".
+When running the script all the demo projects will be stored in your tutorial folder e.g. "c:\tutorial".
 
 If you are ready, just run the pull_demos script:
-
-```bash
-cd tutorial_ci
-./pull_demos.sh
-```
-
-Non Ubuntu / Debian Systems
-===========================
-
-Unfortunately I myself do not possess any other OSs than Ubuntu. So I can not easily provide installation scripts for other systems.
-
-For System V compatible systems like other Linux or Mac porting the install.sh script might not be to difficult. I am afraid that for other systems I might be painful. Anyway in case you successfully ported the installation script to your platform and you like to share with others I will happily add your script to this repository. Just make a pull request or send it via mail.
+>cd tutorial_ci
+>pull_demos.bat
 
 
+Optionally you might want to install the Chrome browser
+=======================================================
 
+The optional configuration for the Supercar browser tests uses the Google Chrome browser. 
 
+Install Google Chrome:
+www.google.com/chrome
+
+Please set the CHROME_BIN environment variable to the locaton of chrome browser executable!
+On my test environment this is set to C:\Programme\Google\Chrome\Application\chrome.exe.
