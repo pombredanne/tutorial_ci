@@ -24,6 +24,19 @@ The default configuration for the Supercar browser tests uses the Google Chrome 
 Install Google Chrome:
 www.google.com/chrome
 
+Please set the CHROME_BIN environment variable to the locaton of chrome browser executable!
+On my test environment this is set to C:\Programme\Google\Chrome\Application\chrome.exe.
+
+
+You need Firefox browser (ESR) installed
+========================================
+
+Start here:
+http://www.mozilla.org/en-US/firefox/organizations/all.html
+
+Please set the FIREFOX_BIN environment variable to the locaton of firefox browser executable!
+On my test environment this is set to C:\Programme\Mozilla Firefox\firefox.exe.
+
 
 First you need git
 ==================
@@ -35,6 +48,11 @@ I just clicked on the most recent installer for git for Windows (TM) here:
 https://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git
 
 A installation wizzard opened and I used the proposed defaults. In the "Git Setup" seciton I selected "Run Git from the Windows Command Prompt" because that is what I am going to do.
+
+Please set the GIT_HOME environment variable to the locaton of git.exe!
+On my test environment this is set to C:\Programme\Git.
+
+Note: In Jenkins you need to set the git installation folder as well: C:\Programme\Git\bin\git.exe
 
 
 Installation
