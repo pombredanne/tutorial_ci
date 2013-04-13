@@ -17,10 +17,10 @@ REM #########################
 
 echo 'pulling example projects'
 cd ..
-git clone http://github.com/markfink/supercars
-git clone http://github.com/markfink/fitnesse_jukebox
-git clone http://github.com/markfink/SelRunner
-git clone http://github.com/markfink/tutorial_jasmine
+git clone https://github.com/markfink/supercars
+git clone https://github.com/markfink/fitnesse_jukebox
+git clone https://github.com/markfink/SelRunner
+git clone https://github.com/markfink/tutorial_jasmine
 git clone http://github.com/markfink/grandma
 cd "%SCRIPTPATH%"
 echo 'pulling example projects completed'

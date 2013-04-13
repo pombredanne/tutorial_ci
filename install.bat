@@ -62,6 +62,21 @@ cd "%SCRIPTPATH%"
 echo 'JMeter install completed'
 
 
+:maven
+REM #########################
+REM ### Maven installation
+REM #########################
+
+echo 'installing Maven'
+mkdir "%SCRIPTPATH%\tmp\maven-install"
+cd "%SCRIPTPATH%\tmp\maven-install"
+wget http://mirror.serversupportforum.de/apache/maven/maven-2/2.2.1/binaries/apache-maven-2.2.1-bin.zip
+cd "%SCRIPTPATH%"
+.\runtime\python\python unzip.py -z "%SCRIPTPATH%\tmp\maven-install\apache-maven-2.2.1-bin.zip" -o ".\runtime" -p 100
+cd "%SCRIPTPATH%"
+echo 'Maven install completed'
+
+
 :node
 REM #########################
 REM ### Node.js installation
@@ -82,21 +97,6 @@ echo 'installing Karma'
 cd "%SCRIPTPATH%"
 .\runtime\node\npm -g install karma
 echo 'Karma install completed'
-
-
-:maven
-REM #########################
-REM ### Maven installation
-REM #########################
-
-echo 'installing Maven'
-mkdir "%SCRIPTPATH%\tmp\maven-install"
-cd "%SCRIPTPATH%\tmp\maven-install"
-wget http://mirror.serversupportforum.de/apache/maven/maven-2/2.2.1/binaries/apache-maven-2.2.1-bin.zip
-cd "%SCRIPTPATH%"
-.\runtime\python\python unzip.py -z "%SCRIPTPATH%\tmp\maven-install\apache-maven-2.2.1-bin.zip" -o ".\runtime" -p 100
-cd "%SCRIPTPATH%"
-echo 'Maven install completed'
 
 
 :cleanup

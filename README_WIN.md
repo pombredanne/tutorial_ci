@@ -2,18 +2,25 @@
 Installation of the book software on a Windows (TM) environment
 ===============================================================
 
-I did my very best to make the book software and tools to install on a Windows (TM) environment. However I am not a regular Windows user so if you find a problem on your particular Windows (TM) flavor I want to encourage you to fix it and to contribute it back so other Windows /TM) users can benefit from it. 
+If you want to start out fresh please use a Debian or Ubuntu Linux distribution. This will give you a much more pleasant experience. Details about the installation you will find in the README.md or chapter 11 in the book. 
+
+The Windows (TM) installation should be used only in case there is absolutely no other way. I did my very best to make the book software and tools to install on a Windows (TM) environment. However I am not a regular Windows user so if you find a problem on your particular Windows (TM) flavor I want to encourage you to fix it and to contribute it back so other Windows /TM) users can benefit from it. 
 
 Another thing is if you find out how to improve the installation on a Windows (TM) environm,ent please contribute that as well.
 
 
-You need a Java Runtime environment as well
-===========================================
+You need a Java JDK environment as well
+=======================================
 
-Some of the test automation tools like Selenium 2 need a Java runtime environment. If you have already installed one you can skip this step. Otherwise visit the following link:
-http://javadl.sun.com/webapps/download/AutoDL?BundleId=75268
+Some of the test automation tools like Selenium 2 need Java. If you have already installed the JDK you can skip this step. Otherwise visit the following link and install the JDK suitable for your platform:
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
 Do not forget to set the JAVA_HOME folder!
+
+For Ant installation please visit here:
+https://ant.apache.org/bindownload.cgi
+
+The installation bin folder must be added to the path veriable. Do not forget to set the ANT_HOME folder!
 
 
 You need Chrome browser installed
@@ -59,7 +66,9 @@ Installation
 ============
 
 I created a tutorial folder like the following for the installation of the tutorial related tools and scripts:
-C:\Documents and Settings\<your name>\tutorial
+C:\tutorial
+
+Note: I really tried to make it work with directories that have spaces in it but I only got a lot of grey hair from it. Eventually I had to gave up on this idea.
 
 Open a cmd console and change into the new folder:
 >cd tutorial
