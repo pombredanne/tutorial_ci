@@ -9,14 +9,13 @@ cd ..
 set TUTORIAL_FOLDER=%cd%
 cd "%SCRIPTPATH%"
 
-goto replace
 
 :git
 REM #########################
-REM ## pull all the demo repositories from github parallel to tutorial_ci
+REM ## pull all the example repositories from github parallel to tutorial_ci
 REM #########################
 
-echo 'pulling demo files'
+echo 'pulling example projects'
 cd ..
 git clone http://github.com/markfink/supercars
 git clone http://github.com/markfink/fitnesse_jukebox
@@ -24,7 +23,7 @@ git clone http://github.com/markfink/SelRunner
 git clone http://github.com/markfink/tutorial_jasmine
 git clone http://github.com/markfink/grandma
 cd "%SCRIPTPATH%"
-echo 'pulling demo files completed'
+echo 'pulling example projects completed'
 
 
 :replace
@@ -38,7 +37,6 @@ REM find ./jenkins -name "config.xml" -print | xargs \
 REM     sed -i "s|/home/mark/devel|$TUTORIAL_FOLDER|g"
 echo 'adjusting completed'
 
-goto end
 
 :maven
 REM #########################
