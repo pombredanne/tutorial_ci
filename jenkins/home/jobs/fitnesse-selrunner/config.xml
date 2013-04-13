@@ -3,7 +3,7 @@
   <actions/>
   <description>SelRunner testsuite to verify selenium adapter functionality - &#xd;
 note: this testsuite does not need a selenium server</description>
-  <logRotator>
+  <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>30</daysToKeep>
     <numToKeep>-1</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
@@ -57,23 +57,25 @@ note: this testsuite does not need a selenium server</description>
   <triggers class="vector">
     <hudson.triggers.SCMTrigger>
       <spec>0 0 * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Ant plugin="ant@1.1">
-      <targets>-Dfitnesse.runtime=${JENKINS_HOME}/../../runtime/fitnesse/
--Dfitnesse.basedir=${WORKSPACE}/test/fitnesse
--Dfitnesse.testfile=SelRunner.ChromeBrowser
--Dfitnesse.suiteFilter=NIGHTLY
--Dfitnesse.port=10201
--Dslim.port=10210
--Dselenium.server=none
--Dselenium.browser=ChromeRunner
--Dreport.path=${WORKSPACE}/test/fitnesse/results
-</targets>
+      <targets>test</targets>
+      <antName>(Default)</antName>
       <antOpts>-Xmx1024m -XX:MaxPermSize=128m</antOpts>
-      <buildFile>${JENKINS_HOME}/../../runtime/fitnesse/antscript/build.xml</buildFile>
+      <buildFile>${JENKINS_HOME}\..\..\runtime\fitnesse\antscript\build.xml</buildFile>
+      <properties>fitnesse.runtime=${JENKINS_HOME}/../../runtime/fitnesse/
+fitnesse.basedir=${WORKSPACE}/test/fitnesse
+fitnesse.testfile=SelRunner.FirefoxBrowser
+fitnesse.suiteFilter=NIGHTLY
+fitnesse.port=10201
+slim.port=10210
+selenium.server=none
+selenium.browser=FirefoxRunner
+report.path=${WORKSPACE}/test/fitnesse/results</properties>
     </hudson.tasks.Ant>
   </builders>
   <publishers>

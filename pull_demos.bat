@@ -28,13 +28,16 @@ echo 'pulling example projects completed'
 
 :replace
 REM #########################
-REM ### Adjusting paths in Jenkins jobs to local repo locations
+REM ### Adjusting Jenkins jobs to Windows (TM) and local repo locations
 REM #########################
 
 echo 'adjusting Jenkins jobs'
+copy /Y .\jenkins\home\jobs\fitnesse-supercars\config.win.xml .\jenkins\home\jobs\fitnesse-supercars\config.xml
+copy /Y .\jenkins\home\jobs\jasmine-jukebox\config.win.xml .\jenkins\home\jobs\jasmine-jukebox\config.xml
+copy /Y .\jenkins\home\jobs\jasmine-supercars-controllers\config.win.xml .\jenkins\home\jobs\jasmine-supercars-controllers\config.xml
+copy /Y .\jenkins\home\jobs\nosetests-supercars-backend\config.win.xml .\jenkins\home\jobs\nosetests-supercars-backend\config.xml
+
 .\runtime\python\python replace.py "/home/mark/devel" "%TUTORIAL_FOLDER%" ".\jenkins\home\jobs\*\config.xml"
-REM find ./jenkins -name "config.xml" -print | xargs \
-REM     sed -i "s|/home/mark/devel|$TUTORIAL_FOLDER|g"
 echo 'adjusting completed'
 
 

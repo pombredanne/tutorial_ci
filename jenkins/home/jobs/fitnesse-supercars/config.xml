@@ -68,17 +68,19 @@ note: &#xd;
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Ant plugin="ant@1.1">
-      <targets>-Dfitnesse.runtime=${JENKINS_HOME}/../../runtime/fitnesse/
--Dfitnesse.basedir=${WORKSPACE}/test/fitnesse
--Dfitnesse.testfile=SuperCars
--Dfitnesse.suiteFilter=NIGHTLY
--Dfitnesse.port=10201
--Dslim.port=10210
--Dselenium.server=none
--Dselenium.browser=ChromeRunner
--Dreport.path=${WORKSPACE}/test/fitnesse/results</targets>
+      <targets>test</targets>
+      <antName>(Default)</antName>
       <antOpts>-Xmx1024m -XX:MaxPermSize=128m</antOpts>
       <buildFile>${JENKINS_HOME}/../../runtime/fitnesse/antscript/build.xml</buildFile>
+      <properties>fitnesse.runtime=${JENKINS_HOME}/../../runtime/fitnesse/
+fitnesse.basedir=${WORKSPACE}/test/fitnesse
+fitnesse.testfile=SuperCars
+fitnesse.suiteFilter=NIGHTLY
+fitnesse.port=10201
+slim.port=10210
+selenium.server=none
+selenium.browser=FirefoxRunner
+report.path=${WORKSPACE}/test/fitnesse/results</properties>
     </hudson.tasks.Ant>
     <hudson.tasks.Shell>
       <command>./scripts/restserver.sh stop
