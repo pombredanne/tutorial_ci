@@ -32,6 +32,8 @@ REM ### Adjusting Jenkins jobs to Windows (TM) and local repo locations
 REM #########################
 
 echo 'adjusting Jenkins jobs'
+copy /Y .\jenkins\home\jobs\fitnesse-jukebox\config.win.xml .\jenkins\home\jobs\fitnesse-jukebox\config.xml
+copy /Y .\jenkins\home\jobs\fitnesse-selrunner\config.win.xml .\jenkins\home\jobs\fitnesse-selrunner\config.xml
 copy /Y .\jenkins\home\jobs\fitnesse-supercars\config.win.xml .\jenkins\home\jobs\fitnesse-supercars\config.xml
 copy /Y .\jenkins\home\jobs\jasmine-jukebox\config.win.xml .\jenkins\home\jobs\jasmine-jukebox\config.xml
 copy /Y .\jenkins\home\jobs\jasmine-supercars-controllers\config.win.xml .\jenkins\home\jobs\jasmine-supercars-controllers\config.xml

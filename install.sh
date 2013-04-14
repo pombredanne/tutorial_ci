@@ -19,9 +19,19 @@ sudo apt-get -y update
 sudo apt-get -y install libssl-dev git-core pkg-config build-essential curl gcc g++ checkinstall
 # we need a JRE for Jenkins...
 sudo apt-get -y install openjdk-7-jdk ant maven sysstat
-# we need chrome browser for testing alternatively use firefox esr release!
-sudo apt-get -y install chromium-browser
 echo 'system packages install completed'
+
+
+#########################
+### Install Firefox ESR version
+#########################
+
+echo 'download Firefox ESR'
+mkdir $SCRIPTPATH/tmp/firefox-install
+cd $SCRIPTPATH/tmp/firefox-install
+wget ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/17.0.5esr/linux-i686/en-GB/firefox-17.0.5esr.tar.bz2
+tar -xvjf firefox-17.0.5esr.tar.bz2 -C $SCRIPTPATH/runtime/
+echo 'Firefox ESR install completed'
 
 
 #########################

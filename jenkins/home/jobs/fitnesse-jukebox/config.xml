@@ -71,7 +71,7 @@
       <targets>test</targets>
       <antName>Ant 1.9.0</antName>
       <antOpts>-Xmx1024m -XX:MaxPermSize=128m</antOpts>
-      <buildFile>${JENKINS_HOME}\..\..\runtime\fitnesse\antscript\build.xml</buildFile>
+      <buildFile>${JENKINS_HOME}/../../runtime/fitnesse/antscript/build.xml</buildFile>
       <properties>fitnesse.runtime=${JENKINS_HOME}/../../runtime/fitnesse/
 fitnesse.basedir=${WORKSPACE}/test/fitnesse
 fitnesse.testfile=JukeBox
