@@ -77,3 +77,5 @@ Non Ubuntu / Debian Systems
 Unfortunately I myself do not possess any other OSs than Ubuntu. So I can not easily provide installation scripts for other systems.
 
 For System V compatible systems like other Linux or Mac porting the install.sh script might not be to difficult. I am afraid that for other systems I might be painful. Anyway in case you successfully ported the installation script to your platform and you like to share with others I will happily add your script to this repository. Just make a pull request or send it via mail.
+
+For Windows (TM) operating systems I made an effort in April to port the scripts. I tested them on Windows XP (TM) and Windows 7 (TM). For the description of the installation process please have a look at README_WIN.md.

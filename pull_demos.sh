@@ -11,15 +11,15 @@ TUTORIAL_FOLDER=$( cd $(dirname $0) ; cd .. ; pwd -P )
 #########################
 
 echo 'pulling demo files'
-git clone http://github.com/markfink/supercars \
+git clone htts://github.com/markfink/supercars \
     $TUTORIAL_FOLDER/supercars
-git clone http://github.com/markfink/fitnesse_jukebox \
+git clone https://github.com/markfink/fitnesse_jukebox \
     $TUTORIAL_FOLDER/fitnesse_jukebox
-git clone http://github.com/markfink/SelRunner \
+git clone https://github.com/markfink/SelRunner \
     $TUTORIAL_FOLDER/SelRunner
-git clone http://github.com/markfink/tutorial_jasmine \
+git clone https://github.com/markfink/tutorial_jasmine \
     $TUTORIAL_FOLDER/tutorial_jasmine
-git clone http://github.com/markfink/grandma \
+git clone https://github.com/markfink/grandma \
     $TUTORIAL_FOLDER/grandma
 echo 'pulling demo files completed'
 
